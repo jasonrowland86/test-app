@@ -1,0 +1,26 @@
+<% include ./header %>
+<h1><%= message %></h1>
+<a href="/service/<%= service.id %>">Back</a>
+
+<h2><%= service.name %></h2>
+<h3>Price: <%= service.price %></h3>
+<h3>Description: <%= service.description %></h3>
+
+<% if (provider) { %>
+  <h2>Edit Service:</h2>
+  <form action="/service/<%= service.id %>" method="POST">
+    <input name="name" type="text" placeholder="<%= service.name %>" />
+    </br>
+    <input name="price" type="text" placeholder="<%= service.price %>" />
+    </br>
+    <input name="description" type="text" placeholder="<%= service.description %>" />
+    </br>
+    <input name="procedure_id" type="hidden" value="<%= service.procedure_id %>" />
+    <input name="provider_id" type="hidden" value="<%= provider.id %>" />
+    <input type='submit' class='update' value='Update'>
+    <input type="hidden" name="_method" value="PUT" />
+  </form>
+<% } %>
+</br>
+
+<% include ./footer %>

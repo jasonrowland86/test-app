@@ -1,0 +1,17 @@
+<% include ./header %>
+<h1><%= message %></h1>
+<a href="/">Back</a>
+
+<h2><%= procedure.name %></h2>
+<h3>Description: <%= procedure.description %></h3>
+
+<form action='/service' method="POST">
+  <input name="name" type="text" placeholder="service name" />
+  <input name="price" type="text" placeholder="price" />
+  <input name="description" type="text" placeholder="description" />
+  <input name="procedure_id" type="hidden" value="<%= procedure.id %>" />
+  <input name="provider_id" type="hidden" value="<%= provider.id %>" />
+  <input class='add' type="submit" value="Add Service">
+</form>
+
+<% include ./footer %>

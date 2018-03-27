@@ -1,0 +1,19 @@
+<% include ./header %>
+
+<h1><%= message %></h1>
+<a href="./register">Register</a>
+</br>
+<a href="/">Home</a>
+
+<h3>Log In:</h3>
+
+<form method='POST' action='/login'>
+  <input name='username' type='text' placeholder='name' required />
+  <br>
+  <input name='password' type='password' placeholder='password' required />
+  <br>
+  <input class='submit' type='submit' value='Login' />
+</form>
+
+
+<% include ./footer %>

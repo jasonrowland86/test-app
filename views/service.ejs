@@ -1,0 +1,61 @@
+<% include ./header %>
+<h1><%= message %></h1>
+<a href="/">Home</a>
+<br></br>
+
+<% if (provider) { %>
+  <a href="/provider">My Services</a>
+
+  <h2>Add Service</h2>
+  <form action='/service' method="POST">
+    <input name="name" type="text" placeholder="service name" />
+    <input name="price" type="text" placeholder="price" />
+    <input name="description" type="text" placeholder="description" />
+    <select name="procedure_id">
+      <% procedures.map(procedure => {  %>
+        <option value='<%= procedure.id %>'><%= procedure.name %></option>
+      <% }) %>
+    </select>
+    <input name="provider_id" type="hidden" value="<%= provider.id %>" />
+    <input class='add' type="submit" value="Add Service">
+  </form>
+<% } else { %>
+  <a href="./login">Login to add a service</a>
+<% } %>
+
+<h3>All Services:</h3>
+<ul>
+<% services.map(service => { %>
+  <li><a href='./service/<%= service.id %>'><%= service.name %></a></li>
+<% }) %>
+</ul>
+
+<h3>Services by Providers:</h3>
+<% providers.map(provider => { %>
+  <ul>
+  <li><h4><%= provider.name %>:</h4></li>
+    <ul>
+    <% services.map(service => { %>
+      <% if (service.provider_id === provider.id) { %>
+        <li><a href='./service/<%= service.id %>'><%= service.name %></a></li>
+      <% } %>
+    <% }) %>
+    </ul>
+  </ul>
+<% }) %>
+
+<h3>Services by Procedures:</h3>
+<% procedures.map(procedure => { %>
+  <ul>
+  <li><h4><%= procedure.name %> %>:</h4></li>
+    <ul>
+    <% services.map(service => { %>
+      <% if (service.procedure_id === procedure.id) { %>
+        <li><a href='./service/<%= service.id %>'><%= service.name %></a></li>
+      <% } %>
+    <% }) %>
+    </ul>
+  </ul>
+<% }) %>
+
+<% include ./footer %>

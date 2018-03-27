@@ -1,0 +1,36 @@
+<% include ./header %>
+
+<% if (provider) { %>
+  <% provider.map(name => { %>
+    <h2><%= name.name %> logged in!</h2>
+  <% }) %>
+<% } %>
+
+<h1><%= message %></h1>
+
+<% if (provider) { %>
+  <a href="./logout">Log Out</a>
+  </br>
+<% } else { %>
+  <a href="./login">Log In</a>
+  </br>
+  <a href="./register">Register</a>
+  </br>
+<% } %>
+<a href="./service">Service Page</a>
+
+<h3>Providers:</h3>
+<ul>
+<% providers.map(name => { %>
+  <li><p><%= name.name %></p></li>
+<% }) %>
+</ul>
+
+<h3>Procedures:</h3>
+<ul>
+<% procedures.map(procedure => { %>
+  <li><a href="./procedure/<%= procedure.id %>"><%= procedure.name %></a></li>
+<% }) %>
+</ul>
+
+<% include ./footer %>

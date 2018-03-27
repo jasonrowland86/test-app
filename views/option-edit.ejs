@@ -1,0 +1,19 @@
+<% include ./header %>
+<h1><%= message %></h1>
+<a href="/service/<%= option.service_id %>">Back</a>
+
+<h2><%= option.name %></h2>
+<h3>Price: <%= option.price %></h3>
+<h3>Description: <%= option.description %></h3>
+
+<h2>Edit Option:</h2>
+<form action='/option/<%= option.id %>' method="POST">
+  <input name="name" type="text" placeholder="<%= option.name %>" />
+  <input name="price" type="text" placeholder="<%= option.price %>" />
+  <input name="description" type="text" placeholder="<%= option.description %>" />
+  <input type="submit" value="Update">
+  <input type="hidden" name="_method" value="PUT" />
+</form>
+</br>
+
+<% include ./footer %>

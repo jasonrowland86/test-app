@@ -1,0 +1,29 @@
+<% include ./header %>
+<h1><%= message %></h1>
+<a href="/">Home</a>
+<br></br>
+
+<h2>Add Service</h2>
+<form action='/service' method="POST">
+  <input name="name" type="text" placeholder="service name" />
+  <input name="price" type="text" placeholder="price" />
+  <input name="description" type="text" placeholder="description" />
+  <select name="procedure_id">
+    <% procedures.map(procedure => {  %>
+      <option value='<%= procedure.id %>'><%= procedure.name %></option>
+    <% }) %>
+  </select>
+  <input name="provider_id" type="hidden" value="<%= provider.id %>" />
+  <input class='add' type="submit" value="Add Service">
+</form>
+
+<h3>My Services:</h3>
+<ul>
+<% services.map(service => { %>
+  <% if (service.provider_id === provider.id) { %>
+  <li><a href='./service/<%= service.id %>'><%= service.name %></a></li>
+  <% } %>
+<% }) %>
+</ul>
+
+<% include ./footer %>

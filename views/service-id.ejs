@@ -1,0 +1,52 @@
+<% include ./header %>
+<h1><%= message %></h1>
+<a href="/service">Back</a>
+
+<h2><%= service.name %></h2>
+<h3>Price: <%= service.price %></h3>
+<h3>Description: <%= service.description %></h3>
+<h3>Options:</h3>
+
+<% options.map(option => { %>
+  <% if (option.service_id === service.id) { %>
+    <p><%= option.name %></p>
+    <ul>
+      <li><%= option.price %></li>
+      <li><%= option.description %></li>
+    </ul>
+
+    <a href="/option-edit/<%= option.id %>">Edit Option</a>
+    </br>
+    </br>
+
+    <form action="/option/<%= option.id %>?_method=DELETE" method="POST">
+      <input type='submit' class='delete' value='Delete Option'>
+    </form>
+  <% } %>
+<% }) %>
+
+<% if (provider) { %>
+  <% if (provider.id === service.provider_id) { %>
+    <h3>Add Option:</h3>
+    <form action='/option' method="POST">
+      <input name="name" type="text" placeholder="name" />
+      <input name="price" type="text" placeholder="price" />
+      <input name="description" type="text" placeholder="description" />
+      <input name="service_id" type="hidden" value="<%= service.id %>" />
+      <input name="provider_id" type="hidden" value="<%= service.provider_id %>" />
+      <input name="procedure_id" type="hidden" value="<%= service.procedure_id %>" />
+      <input class='add' type="submit" value="Add">
+    </form>
+  <% } %>
+<% } %>  
+</br>
+
+<a href="/service-edit/<%= service.id %>">Edit Service</a>
+</br>
+</br>
+
+<form action="/service/<%= service.id %>?_method=DELETE" method="POST">
+  <input type='submit' class='delete' value='Delete Service'>
+</form>
+
+<% include ./footer %>

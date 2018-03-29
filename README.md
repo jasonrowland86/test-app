@@ -25,7 +25,7 @@
 
 ![Alt text](/ScreenShot3.jpg?raw=true)
 
-## Installing Dependencies and running app
+## Installing dependencies and running app
 
 * In app directory run npm install to install all dependencies
 * Run npm start to run the app

@@ -12,4 +12,4 @@
 * Run migration
 * Change the following lines:
 
-![Alt text](/ScreenShot.png)
+![Alt text](./ScreenShot.png)

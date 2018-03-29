@@ -10,6 +10,6 @@
 
 * In mysql run: Create database "Your database name";
 * Run migration
-* Change the following lines:
+* Change lines 6 and 7 in database.js to your database name and password:
 
 ![Alt text](/ScreenShot.jpg?raw=true)

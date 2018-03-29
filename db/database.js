@@ -18,8 +18,8 @@ const pool = mysql.createPool({
   connectionLimit: '',
   host: 'localhost',
   user: 'root',
-  password: 'Ultima8163',
-  database: 'testdb'
+  password: 'Your mysql password here',
+  database: 'Your database name here'
 });
 
 pool.getConnection((err, connection) => {
